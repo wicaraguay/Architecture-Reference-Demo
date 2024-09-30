@@ -1,0 +1,16 @@
+{
+    "name": "user-service",
+    "version": "1.0.0",
+    "description": "Microservicio para gestionar usuarios",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js",
+      "seed": "node seed.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "mongoose": "^7.2.2",
+      "faker": "^5.5.3"
+    }
+  }
+  

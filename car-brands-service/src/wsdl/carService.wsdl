@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CarService"
+             targetNamespace="http://www.example.org/carService/"
+             xmlns:tns="http://www.example.org/carService/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <types>
+    <xsd:schema targetNamespace="http://www.example.org/carService/">
+      <xsd:element name="getAllBrandsRequest" type="xsd:anyType"/>
+      <xsd:element name="getAllBrandsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="brands" type="tns:CarBrandList"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:complexType name="CarBrandList">
+        <xsd:sequence>
+          <xsd:element name="brand" type="tns:CarBrand" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="CarBrand">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="country" type="xsd:string"/>
+          <xsd:element name="established" type="xsd:int" minOccurs="0"/>
+          <xsd:element name="models" type="tns:StringList" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="StringList">
+        <xsd:sequence>
+          <xsd:element name="model" type="xsd:string" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <!-- Definición de otros métodos como getBrandByName, addBrand, etc. -->
+      <xsd:element name="getBrandByNameRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getBrandByNameResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="brand" type="tns:CarBrand"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="addBrandRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="brand" type="tns:CarBrand"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="addBrandResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="brand" type="tns:CarBrand"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </types>
+
+  <message name="getAllBrandsRequest">
+    <part name="parameters" element="tns:getAllBrandsRequest"/>
+  </message>
+  <message name="getAllBrandsResponse">
+    <part name="parameters" element="tns:getAllBrandsResponse"/>
+  </message>
+
+  <message name="getBrandByNameRequest">
+    <part name="parameters" element="tns:getBrandByNameRequest"/>
+  </message>
+  <message name="getBrandByNameResponse">
+    <part name="parameters" element="tns:getBrandByNameResponse"/>
+  </message>
+
+  <message name="addBrandRequest">
+    <part name="parameters" element="tns:addBrandRequest"/>
+  </message>
+  <message name="addBrandResponse">
+    <part name="parameters" element="tns:addBrandResponse"/>
+  </message>
+
+  <portType name="CarServicePortType">
+    <operation name="getAllBrands">
+      <input message="tns:getAllBrandsRequest"/>
+      <output message="tns:getAllBrandsResponse"/>
+    </operation>
+    <operation name="getBrandByName">
+      <input message="tns:getBrandByNameRequest"/>
+      <output message="tns:getBrandByNameResponse"/>
+    </operation>
+    <operation name="addBrand">
+      <input message="tns:addBrandRequest"/>
+      <output message="tns:addBrandResponse"/>
+    </operation>
+    <!-- Agrega más operaciones según sea necesario -->
+  </portType>
+
+  <binding name="CarServiceSoapBinding" type="tns:CarServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="getAllBrands">
+      <soap:operation soapAction="http://www.example.org/carService/getAllBrands"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getBrandByName">
+      <soap:operation soapAction="http://www.example.org/carService/getBrandByName"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="addBrand">
+      <soap:operation soapAction="http://www.example.org/carService/addBrand"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <!-- Agrega más operaciones según sea necesario -->
+  </binding>
+
+  <service name="CarService">
+    <documentation>Servicio SOAP para gestionar marcas de autos</documentation>
+    <port name="CarServicePort" binding="tns:CarServiceSoapBinding">
+      <soap:address location="http://localhost:3000/wsdl"/>
+    </port>
+  </service>
+
+</definitions>
