@@ -11,8 +11,8 @@ services:
       - "8280:8280"  # API Gateway
       - "8290:8290"
     volumes:
-      - ./wso2am/repository/conf:/home/wso2carbon/wso2am-4.3.0/repository/conf
-      # - ./wso2am/config:/home/wso2carbon/wso2am/repository/conf
+      - ./wso2am/repository/conf:/home/wso2carbon/wso2am/repository
+      - ./wso2am/config:/home/wso2carbon/wso2am/repository/conf
     environment:
       - USER_MEM_ARGS=-Xms1024m -Xmx2048m -XX:+UseG1GC
       - JAVA_OPTS=-Dfile.encoding=UTF-8
