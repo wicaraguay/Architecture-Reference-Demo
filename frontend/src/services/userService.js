@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8280/users/v1/users'; // URL del API Manager para el servicio de usuarios
+const API_URL = 'http://67.205.143.93:8280/users/v1/users'; // URL del API Manager para el servicio de usuarios
 
 const getAll = () => {
   return axios.get(API_URL);

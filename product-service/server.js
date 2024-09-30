@@ -82,5 +82,5 @@ app.delete('/products/:id', async (req, res) => {
 
 // Iniciar servidor
 app.listen(port, () => {
-  console.log(`Product service listening at http://localhost:${port}`);
+  console.log(`Product service listening at http://67.205.143.93:${port}`);
 });
