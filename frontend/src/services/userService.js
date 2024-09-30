@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://67.205.143.93:8243/users/v1/users'; // URL del API Manager para el servicio de usuarios
+const API_URL = 'https://67.205.143.93:8243/users'; // URL del API Manager para el servicio de usuarios
 
 const getAll = () => {
   return axios.get(API_URL);
