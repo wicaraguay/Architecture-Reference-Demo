@@ -9,7 +9,6 @@ services:
       - "9443:9443"  # Consola de administración
       - "8243:8243"  # API Gateway SSL
       - "8280:8280"  # API Gateway
-      - "8290:8290"
     volumes:
       - ./wso2am/repository:/home/wso2carbon/wso2am/repository
       - ./wso2am/config:/home/wso2carbon/wso2am/repository/conf
@@ -57,18 +56,18 @@ services:
     depends_on:
       - mongodb
 
-  car-brands-service:
-    build: ./car-brands-service
-    container_name: car-brands-service
-    ports:
-      - "3003:3000"
-    environment:
-      - MONGO_URI=mongodb://mongodb:27017/cardb
-      - PORT=3000
-    networks:
-      - wso2-network
-    depends_on:
-      - mongodb
+  # car-brands-service:
+  #   build: ./car-brands-service
+  #   container_name: car-brands-service
+  #   ports:
+  #     - "3003:3000"
+  #   environment:
+  #     - MONGO_URI=mongodb://mongodb:27017/cardb
+  #     - PORT=3000
+  #   networks:
+  #     - wso2-network
+  #   depends_on:
+  #     - mongodb
 
   frontend:
     build: ./frontend
