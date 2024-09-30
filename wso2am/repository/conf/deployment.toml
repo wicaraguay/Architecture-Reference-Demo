@@ -1,2 +1,17 @@
 [server]
 hostname = "67.205.143.93"
+node_ip = "67.205.143.93"
+
+[apim.gateway.environment]
+    # Esto es para que el gateway esté disponible con la IP pública
+    hostname = "67.205.143.93"
+    http_endpoint = "http://67.205.143.93:8280"
+    https_endpoint = "https://67.205.143.93:8243"
+
+[apim.devportal]
+    # URL del Dev Portal (también conocido como API Store)
+    url = "https://67.205.143.93:9443/devportal"
+
+[apim.publisher]
+    # URL del Publisher (donde publicas APIs)
+    url = "https://67.205.143.93:9443/publisher"
