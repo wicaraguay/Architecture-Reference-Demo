@@ -79,19 +79,10 @@ app.delete('/users/:id', async (req, res) => {
     res.status(500).send(err);
   }
 });
-// app.delete('/users/:id', async (req, res) => {
-//   try {
-//     const userId = req.params.id;
-//     await UserModel.findByIdAndDelete(userId);
-//     res.status(200).json({ message: 'Usuario eliminado con éxito' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Error al eliminar el usuario' });
-//   }
-// });
 
 
 
 // Iniciar servidor
 app.listen(port, () => {
-  console.log(`User service listening at http://67.205.143.93:${port}`);
+  console.log(`User service listening at http://localhost:${port}`);
 });
